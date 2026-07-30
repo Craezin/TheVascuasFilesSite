@@ -5,29 +5,193 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Vascuas Files</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
       background-color: #000;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    /* Fixed Background Video */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1; /* Keeps video behind content */
+    }
+
+    /* Main Content Container Layer */
+    .content-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hero Banner - Height reduced from 70vh to 35vh to bring gallery higher */
+    .hero {
+      height: 35vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
     }
-    video {
-      max-width: 90%;
-      max-height: 90vh;
+
+    .hero h1 {
+      font-size: 3rem;
+      letter-spacing: 3px;
+      margin: 0;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Additional Videos Section */
+    .video-section {
+      background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent overlay */
+      padding: 40px 20px;
+      text-align: center;
+      flex: 1; /* Pushes footer to bottom */
+    }
+
+    .video-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Video Slot Containers - Increased size to 400x225 (16:9 standard ratio) */
+    .video-card {
+      width: 400px;
+      height: 225px;
+      border: 2px dashed #555;
       border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #aaa;
+      background-color: rgba(255, 255, 255, 0.05);
+      overflow: hidden; /* Contains video within rounded corners */
+      position: relative;
+    }
+
+    /* Embedded Video Styling */
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #000;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #222;
     }
   </style>
 </head>
 <body>
 
-  <video controls autoplay loop playsinline preload="metadata">
+  <!-- Background Video -->
+  <video class="bg-video" autoplay loop muted playsinline preload="auto">
     <source src="Vascuas.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
+
+  <!-- Page Content Container -->
+  <div class="content-container">
+    
+    <!-- Hero Banner -->
+    <header class="hero">
+      <h1>WELCOME TO THE VASCUAS FILES</h1>
+    </header>
+
+    <!-- Additional Videos Gallery Section -->
+    <section class="video-section">
+      <h2>The Files</h2>
+      <p>Greatest hits from features such as</p>
+	  <p>Battle Buddy Nick, AVP Nick, OSRS Nick, Lord Vascuas</p>
+
+      <div class="video-grid">
+        <!-- Video Slot 1: Active Playable Video -->
+        <div class="video-card">
+          <video controls playsinline preload="metadata">
+            <source src="Vascuas.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas2.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas3.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas4.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas5.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas6.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas7.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas8.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="video-card">
+		  <video controls playsinline preload="metadata">
+            <source src="Vascuas9.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Project Vascuas Copyright 2026</p>
+    </footer>
+
+  </div>
 
 </body>
 </html>
