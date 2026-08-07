@@ -1,76 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Status</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The V Files | Top Secret Gamer Dossier</title>
+    <style>
+        :root {
+            --primary: #d90429;
+            --primary-dark: #ef233c;
+            --bg-dark: #0b0c10;
+            --bg-card: #1f2833;
+            --text-light: #edf2f4;
+            --text-muted: #8d99ae;
+            --accent-yellow: #ffb703;
+            --border-red: #d90429;
+        }
 
-    body, html {
-      height: 100%;
-      width: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
 
-    .background-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Stretches and fills the screen */
-      z-index: 1;
-    }
+        /* Top Propaganda Alert Bar */
+        .alert-banner {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+        }
 
-    .content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: #ffffff;
-      padding: 2rem;
-      max-width: 800px;
-      background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay to ensure readable text */
-      border-radius: 8px;
-    }
+        /* Header & Nav */
+        header {
+            background-color: #111;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
 
-    h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(239, 35, 60, 0.6);
+        }
 
-    p {
-      font-size: 1.25rem;
-      line-height: 1.6;
-    }
-  </style>
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.95)), 
+                        url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80') center/cover;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 2px dashed var(--primary);
+        }
+
+        .stamp {
+            display: inline-block;
+            border: 4px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 5px 15px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transform: rotate(-3deg);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .btn-cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            border: 2px solid #fff;
+            box-shadow: 4px 4px 0 #000;
+            transition: 0.2s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000;
+            background-color: var(--primary-dark);
+        }
+
+        /* Sections General */
+        section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-yellow);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+
+        /* File Dossier Cards */
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .file-card {
+            background-color: var(--bg-card);
+            border: 1px solid #333;
+            border-top: 4px solid var(--primary);
+            padding: 20px;
+            position: relative;
+        }
+
+        .file-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            filter: grayscale(60%) contrast(120%);
+            border: 1px solid #444;
+        }
+
+        .file-card h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .file-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .redacted {
+            background-color: #000;
+            color: #000;
+            padding: 0 4px;
+            user-select: none;
+        }
+
+        .redacted:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        /* Chat Log Box */
+        .chat-log {
+            background-color: #000;
+            border: 1px solid #333;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #00ff00;
+            margin-top: 15px;
+            border-left: 3px solid var(--accent-yellow);
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .chat-log .user { color: #38b6ff; font-weight: bold; }
+        .chat-log .nv { color: #ff3333; font-weight: bold; }
+
+        /* About Section */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-img {
+            flex: 1 1 400px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border: 3px solid var(--primary);
+            box-shadow: 8px 8px 0 #000;
+        }
+
+        .about-text {
+            flex: 1 1 400px;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .stats-list {
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        .stats-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Contact / Tipster Form */
+        .contact-form {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border: 1px solid #333;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            border: 1px solid #444;
+            color: var(--text-light);
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid var(--primary);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="background-container">
-    <img src="IMG_5250.jpeg" alt="Background" class="bg-image">
-    <div class="content">
-      <h1>ATTENTION</h1>
-      <p>This site has been shut down after receiving a cease and desist from [REDACTED]</p>
+    <!-- Propaganda Top Alert Banner -->
+    <div class="alert-banner">
+        ⚠️ CITIZEN WARNING: EXPOSING THE GAMING DEEDS OF N.V. ⚠️
     </div>
-  </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#home" class="logo">THE V FILES</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#files">The Files</a></li>
+                <li><a href="#about">Subject Profile</a></li>
+                <li><a href="#contact">Submit Evidence</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="stamp">CLASSIFIED // DECLASSIFIED</div>
+        <h1>THE UNVARNISHED TRUTH ABOUT N.V.</h1>
+        <p>A comprehensive investigative archive documenting the forced purchases of 75% off steam bundle "friendslop," rage-quits, and suspicious 3 AM Discord chatter.</p>
+        <a href="#files" class="btn-cta">EXAMINE THE EVIDENCE</a>
+    </section>
+
+    <!-- The Files Section -->
+    <section id="files">
+        <h2 class="section-title">THE EVIDENCE FILES</h2>
+        <div class="files-grid">
+
+            <!-- File 1 -->
+            <div class="file-card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Gaming Setup desk with monitors">
+                <h3>EXHIBIT A: The "Friendslop" Coercion</h3>
+                <p>Subject N.V. repeatedly pressured 4 innocent server members into purchasing $1.99 asset-flip co-op survival games on Steam under the promise: <em>"Trust me, it's hilarious."</em> Total playtime logged across group: <strong>14 minutes</strong>.</p>
+                <div class="chat-log">
+                    <span class="nv">N.V.:</span> bro buy Zombie Crafter HD it's $1.49<br>
+                    <span class="user">Victim_1:</span> Is it good though?<br>
+                    <span class="nv">N.V.:</span> It's peak. Trust me.<br>
+                    <em>*System Note: Game abandoned after 11 minutes*</em>
+                </div>
+            </div>
+
+            <!-- File 2 -->
+            <div class="file-card">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=600&q=80" alt="Gamer in headset dark room">
+                <h3>EXHIBIT B: Illicit Discord Leaks</h3>
+                <p>Leaked transcripts show N.V. pinging <span class="redacted">@everyone</span> at 3:42 AM on a Tuesday solely to share a tier list ranking energy drink flavors and bad hot-takes regarding stealth games.</p>
+                <div class="chat-log">
+                    <span class="nv">N.V.:</span> @everyone wake up, pineapple energy drink is S-tier<br>
+                    <span class="user">Mod:</span> N.V. it's almost 4am go to sleep<br>
+                    <span class="nv">N.V.:</span> Never. The grind never stops.
+                </div>
+            </div>
+
+            <!-- File 3 -->
+            <div class="file-card">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Retro Gaming Consoles">
+                <h3>EXHIBIT C: The Steam Backlog Hoard</h3>
+                <p>Audits reveal N.V. owns 1,240 games on Steam, yet constantly claims: <em>"There is literally nothing to play right now."</em> Over 82% of library remains uninstalled.</p>
+                <p style="font-size:0.8rem; color:var(--accent-yellow);">Status: UNFORGIVABLE BACKLOG HOARDING</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Subject Profile Section -->
+    <section id="about">
+        <h2 class="section-title">SUBJECT PROFILE: N.V.</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=800&q=80" alt="Gamer sitting in gaming chair eating snacks">
+            </div>
+            <div class="about-text">
+                <h3>KNOWN ALIAS: N.V.</h3>
+                <p>The subject is known to operate out of a heavily illuminated RGB basement bunker. Primary weapons include a mechanical keyboard with extra-loud blue switches and an unmuted microphone during heavy snack consumption.</p>
+
+                <ul class="stats-list">
+                    <li><span>Steam Summer Sale Dollars Wasted:</span> <strong>$1,420.00</strong></li>
+                    <li><span>Unread Discord Notifications:</span> <strong>14,291</strong></li>
+                    <li><span>Blame Assigned to Lag:</span> <strong>99.8%</strong></li>
+                    <li><span>Co-op Campaigns Abandoned:</span> <strong>47</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Evidence Submission Section -->
+    <section id="contact">
+        <h2 class="section-title">SUBMIT EVIDENCE & CHAT LOGS</h2>
+        <div class="contact-form">
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Have you been victimized by an N.V. game recommendation? Upload your chat logs or report unplayed gift copies below.</p>
+            <form onsubmit="alert('Evidence logged to The V Files database!'); return false;">
+                <div class="form-group">
+                    <label>Your Gamer Tag / Alias</label>
+                    <input type="text" placeholder="e.g. xX_Victim_Xx" required>
+                </div>
+                <div class="form-group">
+                    <label>Offense Category</label>
+                    <select required>
+                        <option value="">Select Crime...</option>
+                        <option>Forced Purchase of Friendslop</option>
+                        <option>3 AM @everyone Ping</option>
+                        <option>Unmuted Mic Heavy Breathing</option>
+                        <option>Rage Quitting Mid-Match</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Evidence / Chat Transcript</label>
+                    <textarea rows="4" placeholder="Paste Discord logs or steam trade link here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-cta" style="width: 100%; border:none; cursor:pointer;">LOG EVIDENCE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>THE V FILES ARCHIVE &copy; 2026 | PARODY PROPAGANDA NETWORK</p>
+        <p style="margin-top: 5px;">No actual gamers were harmed in the making of this file (except N.V.'s Steam Wallet).</p>
+    </footer>
 
 </body>
 </html>
