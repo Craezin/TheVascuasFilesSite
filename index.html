@@ -24,6 +24,7 @@
       padding-bottom: 2.5rem;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: #ffffff;
+      gap: 1.5rem;
     }
 
     .celebration-card {
@@ -64,15 +65,38 @@
       font-size: 1.1rem;
       margin-bottom: 0;
     }
+
+    /* Video Container Styling */
+    .video-container {
+      margin: 1rem 0;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    figcaption {
+      font-size: 0.85rem;
+      color: #cccccc;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
+
 <div class="celebration-card">
   <h1>What is DLSS 5?</h1>
-  <h1>DLSS 5: AI-Driven Frame Reconstruction</h1>
   
   <figure class="video-container">
-    <video controls src="Vascuas.mp4">
+    <video controls autoplay muted loop playsinline src="Vascuas.mp4">
       Your browser does not support the video tag.
     </video>
     <figcaption>DLSS 5 footage</figcaption>
@@ -84,12 +108,13 @@
   
   <p class="highlight">The future of gaming shifts focus from brute-force rendering to real-time neural simulation—delivering path-traced visual quality at fractionally low hardware overhead.</p>
 </div>
-  <div class="celebration-card">
-    <h1>CPAP BE WITH US,<br>NICK IS DEAD</h1>
-    <p>DLSS runs the game at a lower resolution than your monitor is displaying, and upscales it, so you get the benefit of running lower resolution (better performance) while not really losing that much image quality</p>
-    <p>A new era of peace has finally dawned. We are officially liberated from the dark reign of the gamer Nick and his lawn chair.</p>
-    <p class="highlight">Freedom at last—the onslaught of friend-slop ends now!</p>
-  </div>
+
+<div class="celebration-card">
+  <h1>CPAP BE WITH US,<br>NICK IS DEAD</h1>
+  <p>DLSS runs the game at a lower resolution than your monitor is displaying, and upscales it, so you get the benefit of running lower resolution (better performance) while not really losing that much image quality</p>
+  <p>A new era of peace has finally dawned. We are officially liberated from the dark reign of the gamer Nick and his lawn chair.</p>
+  <p class="highlight">Freedom at last—the onslaught of friend-slop ends now!</p>
+</div>
 
 </body>
 </html>
