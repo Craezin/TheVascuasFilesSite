@@ -45,6 +45,13 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 
+    /* Breaking News Specific Card Styling */
+    .news-card {
+      border: 2px solid #ff2a2a;
+      background: rgba(20, 0, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
+    }
+
     h1 {
       font-size: 1.6rem;
       font-weight: 800;
@@ -86,6 +93,18 @@
       margin-bottom: 0.75rem;
       text-transform: uppercase;
       color: #ffffff;
+    }
+
+    .news-badge {
+      background: linear-gradient(45deg, #ff0000, #ff5500);
+      color: #ffffff;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
     }
 
     /* Chart Container Styling */
@@ -145,6 +164,19 @@
   </style>
 </head>
 <body>
+
+<!-- BREAKING NEWS CARD -->
+<div class="celebration-card news-card">
+  <span class="crypto-badge news-badge">🚨 BREAKING NEWS 🚨</span>
+  <h1 style="color: #ff4d4d;">BANNED FROM DBD FORUMS!</h1>
+  <p>In a desperate attempt to suppress absolute economic truth, Behaviour Interactive moderators have officially <span class="toothpaste-blue">PERMANENTLY BANNED</span> BIG Baby Dick from the Dead by Daylight official community forums!</p>
+
+  <p><strong>The Incident:</strong> Dick posted a 12-page manifesto detailing game-breaking infinite generator exploits that could only be executed if players bought and staked $100 worth of <strong>VascuasCoin ($VASC)</strong>.</p>
+
+  <p>He claimed the exploit allowed Survivors to instantly repair all generators by typing <em>"VASCUAS TO THE MOON"</em> into chat while teabagging at 240 FPS.</p>
+
+  <p class="highlight" style="color: #ffdd00;">BHVR Devs called it "unlawful securities promotion"—we call it FINANCIAL FREEDOM!</p>
+</div>
 
 <!-- DLSS 5 Card -->
 <div class="celebration-card">
