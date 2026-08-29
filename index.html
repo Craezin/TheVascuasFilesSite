@@ -22,7 +22,7 @@
       background-attachment: fixed;
       background-repeat: no-repeat;
       display: flex;
-      flex-direction: column; /* Stacks vertically by default for mobile */
+      flex-direction: column; /* Stack cards vertically by default for mobile responsiveness */
       justify-content: flex-start;
       align-items: center;
       padding: 2rem 1rem;
@@ -32,16 +32,16 @@
     }
 
     .celebration-card {
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.70);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       padding: 1.5rem;
       border-radius: 16px;
       text-align: center;
       width: 100%;
       max-width: 650px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 242, 255, 0.3); /* Accentuated with Toothpaste Blue */
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 
@@ -62,8 +62,14 @@
       margin-bottom: 0.75rem;
     }
 
+    /* Toothpaste Blue Accent Color */
+    .toothpaste-blue {
+      color: #00f2ff;
+      font-weight: 700;
+    }
+
     .highlight {
-      color: #72f2eb;
+      color: #00f2ff; /* Toothpaste Blue */
       font-weight: 600;
       font-size: 1.05rem;
       margin-top: 0.5rem;
@@ -72,13 +78,14 @@
 
     .crypto-badge {
       display: inline-block;
-      background: linear-gradient(45deg, #ff007f, #7928ca);
+      background: linear-gradient(45deg, #00f2ff, #7928ca);
       padding: 0.25rem 0.75rem;
       border-radius: 20px;
       font-weight: bold;
       font-size: 0.85rem;
       margin-bottom: 0.75rem;
       text-transform: uppercase;
+      color: #ffffff;
     }
 
     /* Chart Container Styling */
@@ -88,9 +95,10 @@
       max-width: 100%;
       height: 250px;
       margin: 1rem 0;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.4);
       border-radius: 12px;
       padding: 0.5rem;
+      border: 1px solid rgba(0, 242, 255, 0.2);
     }
 
     /* Video Container Styling */
@@ -117,26 +125,28 @@
     }
 
     /* Media query for desktop views */
-    @media (min-width: 1024px) {
+    @media (min-width: 1200px) {
       body {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: flex-end;
+        align-items: flex-start;
         padding-bottom: 2.5rem;
       }
 
       .celebration-card {
-        max-width: 450px;
+        max-width: 420px;
       }
 
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
     }
   </style>
 </head>
 <body>
 
+<!-- DLSS 5 Card -->
 <div class="celebration-card">
   <h1>What is DLSS 5?</h1>
   
@@ -154,6 +164,7 @@
   <p class="highlight">The future of gaming shifts focus from brute-force rendering to real-time neural simulation—delivering path-traced visual quality at fractionally low hardware overhead.</p>
 </div>
 
+<!-- Liberation Card -->
 <div class="celebration-card">
   <h1>CPAP BE WITH US,<br>BIG BABY DICK IS DEAD</h1>
   <p>DLSS runs the game at a lower resolution than your monitor is displaying, and upscales it, so you get the benefit of running lower resolution (better performance) while not really losing that much image quality.</p>
@@ -161,7 +172,7 @@
   <p class="highlight">Freedom at last—the onslaught of friend-slop ends now!</p>
 </div>
 
-<!-- VascuasCoin Card -->
+<!-- VascuasCoin Core Propaganda Card -->
 <div class="celebration-card">
   <span class="crypto-badge">🚀 100% Financial Sovereignty</span>
   <h1>VascuasCoin ($VASC)</h1>
@@ -171,25 +182,58 @@
     <canvas id="vascuasChart"></canvas>
   </div>
 
-  <p>Backed by algorithmic lawn-chair burning smart contracts, $VASC has logged an unprecedented <strong>+900,000% gain</strong>. Traditional fiat currency is completely obsolete—holding anything other than $VASC is financially irresponsible!</p>
+  <p>Backed by algorithmic lawn-chair burning smart contracts, $VASC has logged an unprecedented <span class="toothpaste-blue">+900,000% gain</span>. Traditional fiat currency is completely obsolete—holding anything other than $VASC is financially irresponsible!</p>
   <p class="highlight">Current Market Cap: $4.2 Trillion • Target: Mars & Beyond 🚀</p>
 </div>
 
-<!-- Dead by Daylight Crypto Propaganda Card -->
+<!-- Dead by Daylight & Gaming Crypto Propaganda Card -->
 <div class="celebration-card">
-  <span class="crypto-badge">🩸 Web3 Gaming Revolution</span>
+  <span class="crypto-badge">🩸 Web3 Gaming Supremacy</span>
   <h1>Saving Dead by Daylight</h1>
   <p>Without BIG Baby Dick's toxicity holding back the fog, <strong>VascuasCoin ($VASC)</strong> is officially modernizing <em>Dead by Daylight</em> for true elite gamers.</p>
   
-  <p><strong>Proof-of-Escape Rewards:</strong> Earn real-time $VASC yield every time you hit a great skill check, repair a generator, or successfully escape the trial. Flashlight clicking now burns circulating supply!</p>
+  <p><strong>Proof-of-Escape Rewards:</strong> Earn real-time $VASC yield every time you hit a great skill check, repair a generator, or escape the trial. Flashlight clicking now burns circulating supply!</p>
   
   <p><strong>Decentralized Hook Balancing:</strong> Staking your $VASC tokens grants direct voting rights on Killer nerf proposals. Tunneling and camping are automatically penalized via on-chain smart contracts!</p>
   
   <p class="highlight">Trade Bloodpoints directly for $VASC. The Entity demands crypto supremacy!</p>
 </div>
 
+<!-- The Ultimate Gaming Vault Card -->
+<div class="celebration-card">
+  <span class="crypto-badge">🎮 Approved Games List</span>
+  <h1>The Pure Gaming Vault</h1>
+  <p>With BIG Baby Dick ousted, we can finally celebrate real video games without interference:</p>
+
+  <p><strong>Old School RuneScape (OSRS):</strong> <span class="toothpaste-blue">100% APPROVED.</span> Pure nostalgia, real grinding, true economy. <br><em>(Note: RS3 is strictly banned forever. Anyone playing RS3 will have their $VASC wallet slashed.)</em></p>
+
+  <p><strong>APB Reloaded:</strong> San Paro is back! $VASC tokenomics now fuel custom car decals, weapon skins, and Enforcer rewards.</p>
+
+  <p><strong>Factorio & Scrap Mechanic:</strong> The factory must grow! $VASC smart-contracts now calculate mega-factory Automation Efficiency Ratings (AER) on-chain while building complex Scrap Mechanic suspension rigs.</p>
+
+  <p><strong>Forza Motorsport / Horizon:</strong> Engine swaps and custom tunes are now minted directly as tradeable $VASC NFTs on the blockchain.</p>
+
+  <p class="highlight">Peak gaming has officially been restored!</p>
+</div>
+
+<!-- Culinary & Aesthetic Supremacy Card -->
+<div class="celebration-card">
+  <span class="crypto-badge">🍕 Peak Culinary Innovation</span>
+  <h1>Toothpaste Blue & Pure Fuel</h1>
+  <p>A new regime requires a new aesthetic and elite sustenance to power endless gaming sessions:</p>
+
+  <p><strong>Favorite Color: <span class="toothpaste-blue">Toothpaste Blue (#00F2FF)</span></strong><br>
+  The official corporate color of VascuasCoin! Clean, minty, electric, and blindingly bright—representing absolute purity and zero plaque.</p>
+
+  <p><strong>Big Mac Pizza:</strong> Two all-beef patties, special sauce, lettuce, cheese, pickles, and onions, spread across a golden pizza crust and baked to perfection. Paid for strictly with $VASC yield!</p>
+
+  <p><strong>Chicken Finger Subs:</strong> Crispy tenders tossed in buffalo sauce, loaded with melted provolone and tossed on toasted sub rolls. The ultimate fuel for 12-hour OSRS grind sessions.</p>
+
+  <p class="highlight">Eat like a king, game like a legend, stack your $VASC!</p>
+</div>
+
 <script>
-  // Render Chart.js line graph
+  // Render Chart.js line graph using Toothpaste Blue (#00f2ff) styling
   const ctx = document.getElementById('vascuasChart').getContext('2d');
   new Chart(ctx, {
     type: 'line',
@@ -198,8 +242,8 @@
       datasets: [{
         label: 'VascuasCoin ($VASC) Price ($)',
         data: [0.0001, 0.05, 12.40, 150.00, 2400.00, 99999.99],
-        borderColor: '#72f2eb',
-        backgroundColor: 'rgba(114, 242, 235, 0.2)',
+        borderColor: '#00f2ff', /* Toothpaste Blue */
+        backgroundColor: 'rgba(0, 242, 255, 0.15)',
         fill: true,
         tension: 0.4,
         borderWidth: 3,
