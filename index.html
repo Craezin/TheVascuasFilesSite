@@ -228,6 +228,21 @@
   </div>
 
   <article class="celebration-card">
+    <span class="crypto-badge">📉 Financial Irresponsibility</span>
+    <h2>Nick's Financial Collapse: The ERobb Tax</h2>
+    
+    <p>Forensic financial auditors have mapped out Nick's monthly spending habits, revealing a horrifying level of SIMP-level financial ruin. While bringing home a steady <strong>~$3,000/month</strong> income, Nick voluntarily surrenders a soul-crushing <strong>60% to 70%</strong> of his total earnings directly into Twitch streamer ERobb221's bank account.</p>
+
+    <div class="chart-container">
+      <canvas id="erobbDonationChart" aria-label="Nick Income vs ERobb Donations Comparison Chart" role="img"></canvas>
+    </div>
+
+    <p>Instead of investing in $VASC, paying rent, or eating actual solid food, Nick chooses to siphon $2,000+ every single month to a multimillionaire streamer just to hear a text-to-speech voice read his unhinged chat messages out loud.</p>
+
+    <p class="highlight" style="color: #ff4d4d;">Verdict: Absolute financial insanity. A total walking L!</p>
+  </article>
+
+  <article class="celebration-card">
     <span class="crypto-badge">🏎️ Custom Forza Build</span>
     <h2>NickSoy's Lightning McQueen Masterpiece</h2>
 
@@ -342,6 +357,57 @@
         pointBackgroundColor: '#ffd700',
         pointRadius: 6
       }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#ffffff',
+            font: { family: 'system-ui' }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#cccccc' },
+          grid: { color: 'rgba(255, 255, 255, 0.1)' }
+        },
+        y: {
+          ticks: { color: '#cccccc' },
+          grid: { color: 'rgba(255, 255, 255, 0.1)' }
+        }
+      }
+    }
+  });
+
+  // Render ERobb Donations vs Income Chart
+  const ctxErobb = document.getElementById('erobbDonationChart').getContext('2d');
+  new Chart(ctxErobb, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: 'Monthly Income ($)',
+          data: [3000, 3100, 2950, 3050, 3000, 3100],
+          borderColor: '#00f2ff',
+          backgroundColor: 'rgba(0, 242, 255, 0.1)',
+          borderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'ERobb Donations ($)',
+          data: [1950, 2100, 1800, 2050, 2000, 2150],
+          borderColor: '#ff2a2a',
+          backgroundColor: 'rgba(255, 42, 42, 0.2)',
+          fill: true,
+          borderWidth: 3,
+          pointBackgroundColor: '#ff0000',
+          pointRadius: 5
+        }
+      ]
     },
     options: {
       responsive: true,
