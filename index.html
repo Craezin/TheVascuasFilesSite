@@ -47,11 +47,17 @@
     body {
       min-height: 100vh;
       width: 100%;
-      background-image: url('VascuasOver.png');
-      background-size: cover;
-      background-position: center;
+      background-color: #060913;
+      /* Dynamic Animated Dark Cyberpunk / Grid Background */
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 242, 255, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(121, 40, 202, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(255, 42, 42, 0.08) 0%, transparent 60%),
+        linear-gradient(rgba(0, 242, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       background-attachment: fixed;
-      background-repeat: no-repeat;
+      animation: ambientGlow 12s ease-in-out infinite alternate, moveGrid 20s linear infinite;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -60,26 +66,86 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: #ffffff;
       gap: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Pulsing Glow Animation */
+    @keyframes ambientGlow {
+      0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0 0, 0 0;
+      }
+      50% {
+        background-position: 20% 30%, -20% -30%, 10% -10%, 0 0, 0 0;
+      }
+      100% {
+        background-position: -15% -20%, 15% 20%, -10% 10%, 0 0, 0 0;
+      }
+    }
+
+    /* Subtle Grid Movement */
+    @keyframes moveGrid {
+      0% {
+        background-position-x: 0px, 0px, 0px, 0px, 0px;
+        background-position-y: 0px, 0px, 0px, 0px, 0px;
+      }
+      100% {
+        background-position-x: 0px, 0px, 0px, 40px, 40px;
+        background-position-y: 0px, 0px, 0px, 40px, 40px;
+      }
+    }
+
+    /* Overlay Scanlines Effect for Extra Dark Mode Aesthetic */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
     }
 
     .celebration-card {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 1.5rem;
       border-radius: 16px;
       text-align: center;
       width: 100%;
       max-width: 650px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(0, 242, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0, 242, 255, 0.05);
+      border: 1px solid rgba(0, 242, 255, 0.25);
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .celebration-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 242, 255, 0.2), inset 0 0 20px rgba(0, 242, 255, 0.1);
     }
 
     .news-card {
       border: 2px solid #ff2a2a;
-      background: rgba(25, 5, 5, 0.85);
-      box-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
+      background: rgba(28, 6, 8, 0.9);
+      box-shadow: 0 0 25px rgba(255, 42, 42, 0.35);
+    }
+
+    .news-card:hover {
+      box-shadow: 0 0 35px rgba(255, 42, 42, 0.5);
     }
 
     h1 {
@@ -132,11 +198,13 @@
       margin-bottom: 0.75rem;
       text-transform: uppercase;
       color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
     }
 
     .news-badge {
       background: linear-gradient(45deg, #ff0000, #ff5500);
       color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
       animation: pulse 1.5s infinite;
     }
 
@@ -152,10 +220,56 @@
       max-width: 100%;
       height: 250px;
       margin: 1rem 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(4, 7, 15, 0.75);
       border-radius: 12px;
       padding: 0.5rem;
       border: 1px solid rgba(0, 242, 255, 0.2);
+    }
+
+    /* Blue Squares Tile Grid Simulation */
+    .runelite-grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      width: 100%;
+      max-width: 280px;
+      margin: 1rem auto;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 242, 255, 0.3);
+      border-radius: 8px;
+    }
+
+    .tile-square {
+      aspect-ratio: 1;
+      border: 2px solid #00f2ff;
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
+      position: relative;
+    }
+
+    .tile-square.filled {
+      background-color: rgba(0, 242, 255, 0.4);
+    }
+
+    .tile-square.solid-blue {
+      background-color: #00f2ff;
+      box-shadow: 0 0 12px #00f2ff;
+    }
+
+    .tile-square.wrong-click {
+      border-color: #ff2a2a;
+      background: rgba(255, 42, 42, 0.5);
+      box-shadow: 0 0 12px #ff2a2a;
+    }
+
+    .tile-square.wrong-click::after {
+      content: "❌";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
     }
 
     .video-container, .image-card-container {
@@ -170,7 +284,7 @@
       height: auto;
       display: block;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     }
 
     figcaption {
@@ -231,6 +345,36 @@
     </figure>
   </div>
 
+  <article class="celebration-card news-card">
+    <span class="crypto-badge news-badge">💀 OSRS HCIM Tragedy</span>
+    <h2 style="color: #ff4d4d;">The Blue Squares Disaster: HCIM RIP</h2>
+    <p>The ultimate tragedy struck Nicholis's high-level <strong>Hardcore Ironman (HCIM)</strong> account during what should have been an easy boss encounter. Relying heavily on his custom-configured <strong>RuneLite Plugin</strong>, Nicholis covered his game viewport in hundreds of overlapping neon blue tile markers to signal "safe paths."</p>
+
+    <div class="runelite-grid-container" aria-label="RuneLite Tile Marker Overlay Grid Simulation">
+      <div class="tile-square"></div>
+      <div class="tile-square filled"></div>
+      <div class="tile-square"></div>
+      <div class="tile-square solid-blue"></div>
+      <div class="tile-square"></div>
+      <div class="tile-square filled"></div>
+      <div class="tile-square wrong-click"></div>
+      <div class="tile-square solid-blue"></div>
+      <div class="tile-square filled"></div>
+      <div class="tile-square"></div>
+      <div class="tile-square solid-blue"></div>
+      <div class="tile-square"></div>
+      <div class="tile-square filled"></div>
+      <div class="tile-square"></div>
+      <div class="tile-square solid-blue"></div>
+    </div>
+
+    <p><strong>Visual Overload & Misclicks:</strong> Instead of clarifying the battlefield, the sea of solid and outlined blue squares created total visual noise. Under pressure, Nicholis panicked and was completely unable to tell which blue square marked the true walk tile versus a hazard zone.</p>
+
+    <p>He repeatedly misclicked directly onto a high-damage danger tile, mistaking it for safe ground. Within seconds, his red HCIM status was wiped out live on stream—all because his ultimate helper plugin ended up completely blinding him.</p>
+
+    <p class="highlight" style="color: #ff4d4d;">Lesson learned: Too many plugin overlays will send your Hardcore status straight to Lumbridge! 🪦</p>
+  </article>
+
   <article class="celebration-card">
     <span class="crypto-badge">📉 Spending Breakdown</span>
     <h2>Tracking Nicholis's Spending Habits</h2>
@@ -283,6 +427,10 @@
     <h2>The End of an Era: Nicholis Vascuas Steps Away</h2>
     <p>Understanding technologies like DLSS 5 makes it clear why modern gaming is evolving so fast—rendering at lower internal resolutions while delivering crisp visuals gives you the best of both performance and visual clarity.</p>
     <p>For the <strong>Project Vascuas</strong> community, seeing Nicholis Vascuas finally take a step back from his usual forum rants feels like a breath of fresh air. Without the constant spam, the community can finally focus on gaming and tech updates.</p>
+    <figure class="image-card-container">
+      <img src="VascuasOver.png" alt="Nicholis Vascuas in Hospital" loading="lazy">
+      <figcaption>Nicholis Vascuas in Hospital, Rest Easy King!</figcaption>
+    </figure>
     <p class="highlight">A cleaner forum and better topics—we're excited for what's next!</p>
   </article>
 
